@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from rest_framework.response import Response
 from rest_framework.views import APIView
+
 from .models import Recipe
 from .serializer import RecipeSerializer
-from rest_framework.response import Response
 
 
 class RecipeView(APIView):
