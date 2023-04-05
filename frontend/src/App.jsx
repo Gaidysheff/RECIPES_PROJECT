@@ -1,5 +1,8 @@
+import "./styles/styles.module.scss";
+
 import React, { Component } from "react";
 
+import Navbar from "./components/navbar/Navbar";
 import axios from "axios";
 
 class App extends Component {
@@ -21,6 +24,7 @@ class App extends Component {
   render() {
     return (
       <>
+        <Navbar />
         <header>Данные из DJANGO</header>
         <hr /> <hr />
         {this.state.details.map((output, id) => (
