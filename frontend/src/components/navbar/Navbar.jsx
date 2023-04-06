@@ -1,6 +1,20 @@
-import { AppBar, Box, Toolbar, Typography, styled } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  TextField,
+  Toolbar,
+  Typography,
+  styled,
+} from "@mui/material";
+import React, { useState } from "react";
 
-import React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+
+// import style from "./Navbar.module.scss";
 
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
@@ -8,22 +22,65 @@ const Navbar = () => {
     justifyContent: "center",
     alignItems: "center",
   });
+  const MenuBox = styled(Box)({
+    display: "flex",
+    gap: 30,
+    cursor: "pointer",
+  });
+  const MenuItems = [
+    { Name: "Главная", Link: "#" },
+    { Name: "Рецепты", Link: "#" },
+    { Name: "О нас", Link: "#" },
+    { Name: "Подписаться", Link: "#" },
+  ];
+
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <AppBar color="default" position="sticky" elevation={0}>
       <StyledToolbar>
-        <Box>
-          <Typography
-            variant="h4"
-            color={"tomato"}
-            sx={{
-              fontFamily: "Splash , cursive",
-              textAlign: { xs: "center", md: "left" },
-            }}
-          >
-            Крутое Меню и Точка :)
+        <Box flex={{ xs: 25, md: 1 }}>
+          <Typography variant="h4" color={"tomato"}>
+            Круто&Точка :)
           </Typography>
         </Box>
+        <MenuBox flex={1} sx={{ display: { xs: "none", md: "flex" } }}>
+          {MenuItems.map((item) => (
+            <Typography variant="body2">{item.Name}</Typography>
+          ))}
+        </MenuBox>
+        <Box flex={0.5}>
+          <TextField
+            sx={{ display: { xs: "none", md: "flex" } }}
+            color="warning"
+            label="Поиск здесь!"
+            variant="filled"
+          />
+          <MenuIcon
+            sx={{ display: { xs: "flex", md: "none" }, cursor: "pointer" }}
+            onClick={() => setOpenMenu(!openMenu)}
+          />
+        </Box>
       </StyledToolbar>
+      <Drawer
+        anchor={"top"}
+        open={openMenu}
+        onClose={() => setOpenMenu(!openMenu)}
+      >
+        <List>
+          <ListItem>
+            {MenuItems.map((item) => (
+              <ListItemButton>{item.Name}</ListItemButton>
+            ))}
+          </ListItem>
+        </List>
+        <TextField
+          sx={{ display: { xs: "flex", md: "none" } }}
+          color="warning"
+          label="Поиск здесь!"
+          variant="outlined"
+        />
+      </Drawer>
     </AppBar>
   );
 };
