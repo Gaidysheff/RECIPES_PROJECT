@@ -44,7 +44,10 @@ const Navbar = () => {
             <Typography
               variant="h4"
               color={"tomato"}
-              sx={{ fontFamily: "Pacifico , cursive" }}
+              sx={{
+                fontFamily: "Pacifico , cursive",
+                textAlign: { xs: "center", md: "left" },
+              }}
             >
               Круто & Точка :)
             </Typography>
@@ -93,7 +96,7 @@ const Navbar = () => {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: { xs: "column", md: "row" },
-          padding: 1,
+          padding: 2,
         }}
       >
         <Typography align="center" variant="h5" mr={{ xs: 0, md: 1 }}>

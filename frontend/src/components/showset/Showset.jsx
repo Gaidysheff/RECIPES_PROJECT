@@ -1,5 +1,6 @@
 import { Box, Container, Grid, Typography, styled } from "@mui/material";
 
+import Category from "../categories/Category";
 import appetizer from "../../static/appetizer.jpg";
 import burger from "../../static/burger1.jpg";
 import drinks from "../../static/drinks.jpg";
@@ -85,7 +86,7 @@ const Showset = () => {
             </StyledCard>
           </Grid>
         </Grid>
-        {/* <Category /> */}
+        <Category />
       </Container>
     </>
   );
