@@ -3,6 +3,7 @@ import "./styles/styles.module.scss";
 import React, { Component } from "react";
 
 import Navbar from "./components/navbar/Navbar";
+import Showset from "./components/showset/Showset";
 import axios from "axios";
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
     return (
       <>
         <Navbar />
+        <Showset />
         <header>Данные из DJANGO</header>
         <hr /> <hr />
         {this.state.details.map((output, id) => (
