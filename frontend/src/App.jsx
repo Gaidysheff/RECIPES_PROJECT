@@ -4,9 +4,10 @@ import React, { Component } from "react";
 
 import Category from "./components/categories/Category";
 import { Container } from "@mui/material";
+import Footer from "./components/footer/Footer";
 import FrontSection from "./components/front-section/FrontSection";
 import Navbar from "./components/navbar/Navbar";
-import ShowSet from "./components/show-set/Showset";
+import ShowSet from "./components/show-set/ShowSet";
 import axios from "axios";
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
           <ShowSet />
           <Category />
           <FrontSection />
+          <Footer />
         </Container>
         <header>Данные из DJANGO</header>
         <hr /> <hr />
