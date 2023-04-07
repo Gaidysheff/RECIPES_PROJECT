@@ -11,7 +11,7 @@ import {
 
 import burger from "../../static/burger1.jpg";
 
-const PostCard = () => {
+const PostCard = ({ myDirection }) => {
   return (
     <Box mt={3}>
       <Link href="#" sx={{ textDecoration: "none" }}>
@@ -20,7 +20,8 @@ const PostCard = () => {
             sx={{
               display: {
                 xs: "block",
-                md: "flex",
+                sm: `${myDirection}`,
+                md: `${myDirection}`,
               },
               flexDirection: "row",
             }}
