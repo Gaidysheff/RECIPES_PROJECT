@@ -1,13 +1,14 @@
 import "./styles/styles.module.scss";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { Component } from "react";
 
 import Category from "./components/categories/Category";
 import { Container } from "@mui/material";
+import DetailsPage from "./components/detailsPage/DetailsPage";
 import Footer from "./components/footer/Footer";
-import FrontSection from "./components/front-section/FrontSection";
+import FrontSection from "./components/frontSection/FrontSection";
 import Navbar from "./components/navbar/Navbar";
-import ShowSet from "./components/show-set/ShowSet";
 import axios from "axios";
 
 class App extends Component {
@@ -29,13 +30,14 @@ class App extends Component {
   render() {
     return (
       <>
-        <Container>
-          <Navbar />
-          <ShowSet />
-          <Category />
-          <FrontSection />
-          <Footer />
-        </Container>
+        <Navbar />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<FrontSection />} />
+            <Route path="/details" element={<DetailsPage />} />
+          </Routes>
+        </BrowserRouter>
+        <Footer />
         <header>Данные из DJANGO</header>
         <hr /> <hr />
         {this.state.details.map((output, id) => (
