@@ -2,8 +2,11 @@ import "./styles/styles.module.scss";
 
 import React, { Component } from "react";
 
+import Category from "./components/categories/Category";
+import { Container } from "@mui/material";
+import FrontSection from "./components/front-section/FrontSection";
 import Navbar from "./components/navbar/Navbar";
-import Showset from "./components/showset/Showset";
+import ShowSet from "./components/show-set/Showset";
 import axios from "axios";
 
 class App extends Component {
@@ -25,8 +28,12 @@ class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
-        <Showset />
+        <Container>
+          <Navbar />
+          <ShowSet />
+          <Category />
+          <FrontSection />
+        </Container>
         <header>Данные из DJANGO</header>
         <hr /> <hr />
         {this.state.details.map((output, id) => (

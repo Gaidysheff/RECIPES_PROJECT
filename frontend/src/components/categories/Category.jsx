@@ -48,30 +48,39 @@ const Category = () => {
     >
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
       <CardBox>
         <StyledCard sx={{ backgroundImage: `url(${drinks})` }}></StyledCard>
+        <StyledTypography>Drinks</StyledTypography>
       </CardBox>
     </Stack>
   );
