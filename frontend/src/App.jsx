@@ -3,8 +3,6 @@ import "./styles/styles.module.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { Component } from "react";
 
-import Category from "./components/categories/Category";
-import { Container } from "@mui/material";
 import DetailsPage from "./components/detailsPage/DetailsPage";
 import Footer from "./components/footer/Footer";
 import FrontSection from "./components/frontSection/FrontSection";

@@ -1,4 +1,4 @@
-import { Box, Container, Link, Stack, Typography, styled } from "@mui/material";
+import { Box, Stack, Typography, styled } from "@mui/material";
 
 import drinks from "../../static/drinks.jpg";
 
