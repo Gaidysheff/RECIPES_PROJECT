@@ -1,7 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
-from django.urls import re_path as url
 from backend_api.views import *
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
+from django.urls import re_path as url
 from rest_framework.schemas import get_schema_view
 
 urlpatterns = [
@@ -11,4 +13,4 @@ urlpatterns = [
         title="RECIPES PROJECT",
         description="API for all things …"
     ), name='openapi-schema'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
