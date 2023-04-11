@@ -67,6 +67,8 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://192.168.20.4:3000",
 ]
 
 ROOT_URLCONF = 'recipes_django_react.urls'
