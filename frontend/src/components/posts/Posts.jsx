@@ -1,9 +1,27 @@
 import { Box, Grid, Pagination, Stack, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 import PostCard from "./PostCard";
-import React from "react";
+import axios from "axios";
 
 const Posts = () => {
+  const [recipe, setRecipe] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          "http://127.0.0.1:8000/api/recipes/"
+          // `${process.env.REACT_APP_API_URL}/api/recipe/`
+        );
+        setRecipe(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <Box>

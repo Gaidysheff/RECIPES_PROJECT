@@ -43,7 +43,7 @@ const Suggestions = () => {
   });
   return (
     <Stack
-      Container
+      container
       direction={"row"}
       justifyContent="center"
       alignItems={"center"}

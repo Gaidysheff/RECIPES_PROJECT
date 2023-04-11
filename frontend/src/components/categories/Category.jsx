@@ -39,7 +39,7 @@ const Category = () => {
   });
   return (
     <Stack
-      Container
+      container
       direction={"row"}
       mt={4}
       spacing={3}

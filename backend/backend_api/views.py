@@ -1,23 +1,34 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from rest_framework import mixins
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
-from .models import Recipe
-from .serializer import RecipeSerializer
+from .models import Recipe, category
+from .serializer import RecipeSerializer, CategorySerializer
 
 
-class RecipeView(APIView):
-    def get(self, request):
-        output = [
-            {
-                'title': output.title,
-                'description': output.description,
-            } for output in Recipe.objects.all()
-        ]
-        return Response(output)
+class RecipeApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Recipe.objects.all()[0:5]
+    serializer_class = RecipeSerializer
+    lookup_field = 'slug'
 
-    def post(self, request):
-        serializer = RecipeSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
+
+class CategoryApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = category.objects.all()
+    serializer_class = CategorySerializer
+    lookup_field = 'id'
+
+
+class CategoryPostApiView(viewsets.ViewSet):
+    def retrieve(self, request, pk=None):
+        queryset = Recipe.objects.filter(category=pk)
+        serializer = RecipeSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class PopularPostsApiView(viewsets.ViewSet):
+    def list(self, request, pk=None):
+        queryset = Recipe.objects.filter(
+            postLabel__iexact='POPULAR').order_by('-id')[0:4]
+        serializer = RecipeSerializer(queryset, many=True)
+        return Response(serializer.data)

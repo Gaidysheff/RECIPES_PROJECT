@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography, styled } from "@mui/material";
+import { Box, Grid, Typography, styled } from "@mui/material";
 
 import appetizer from "../../static/appetizer.jpg";
 import burger from "../../static/burger1.jpg";

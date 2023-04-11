@@ -8,7 +8,7 @@ from rest_framework.schemas import get_schema_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', RecipeView.as_view(), name='recipe'),
+    path('api/', include('backend_api.urls')),
     path('openapi', get_schema_view(
         title="RECIPES PROJECT",
         description="API for all things …"
