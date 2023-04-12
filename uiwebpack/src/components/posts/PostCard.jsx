@@ -9,15 +9,10 @@ import {
   Typography,
 } from "@mui/material";
 
-import burger from "../../static/burger1.jpg";
-
-const PostCard = ({ myDirection }) => {
+const PostCard = ({ myDirection, recipeHref, title, excerpt, image }) => {
   return (
     <Box mt={3}>
-      <Link
-        href="http://localhost:5173/details"
-        sx={{ textDecoration: "none" }}
-      >
+      <Link href={recipeHref} sx={{ textDecoration: "none" }}>
         <Card>
           <Box
             sx={{
@@ -32,10 +27,10 @@ const PostCard = ({ myDirection }) => {
             <CardMedia
               component={"img"}
               height="300px"
-              image={burger}
-              alt="burger_image"
+              image={image}
+              alt="recipe_image"
               sx={{
-                width: "400px",
+                width: "350px",
                 cursor: "pointer",
                 "&:hover": {
                   opacity: 0.6,
@@ -47,13 +42,10 @@ const PostCard = ({ myDirection }) => {
             />
             <CardContent sx={{ minHeight: "260px" }}>
               <Typography gutterBottom variant="h5" align="center">
-                Далеко-далеко за словесными горами.
+                {title}
               </Typography>
               <Typography variant="h6" color="text.secondary">
-                Далеко-далеко за, словесными горами в стране гласных и согласных
-                живут рыбные тексты. Грустный назад всеми речью ipsum океана
-                переулка текст, решила которое вершину, власти, запятых первую
-                даль точках свой своих своего. Взобравшись!
+                {excerpt}
               </Typography>
               <CardActions>
                 <Button sx={{ color: "tomato" }} size="large">
@@ -72,3 +64,4 @@ const PostCard = ({ myDirection }) => {
 };
 
 export default PostCard;
+

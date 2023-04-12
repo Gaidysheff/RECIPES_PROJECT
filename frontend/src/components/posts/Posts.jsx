@@ -5,16 +5,41 @@ import PostCard from "./PostCard";
 import axios from "axios";
 
 const Posts = () => {
+  // console.log(process.env.REACT_APP_API_URL);
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          "http://127.0.0.1:8000/api/recipes/"
-          // `${process.env.REACT_APP_API_URL}/api/recipe/`
-        );
-        setRecipe(res.data);
+        await axios
+          .get(
+            "http://127.0.0.1:8000/api/recipes/"
+            // `${process.env.REACT_APP_API_URL}/api/recipes/`
+          )
+          .then((res) => {
+            // console.log(res);
+            setRecipe(res.data);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const [popular, setPopular] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await axios
+          .get(
+            "http://127.0.0.1:8000/api/PopularPostsApiView/"
+            // `${process.env.REACT_APP_API_URL}/api/PopularPostsApiView/`
+          )
+          .then((res) => {
+            setPopular(res.data);
+          });
       } catch (error) {
         console.log(error);
       }
@@ -26,23 +51,24 @@ const Posts = () => {
     <>
       <Box>
         <Typography variant="h4" align="center">
-          {" "}
-          Свежие рецепты{" "}
+          Свежие рецепты
         </Typography>
         <Grid
           container
           columnSpacing={{ xs: 0, sm: 1, md: 1 }}
           direction={"column"}
         >
-          <Grid item xs>
-            <PostCard myDirection={"flex"} />
-          </Grid>
-          <Grid item xs>
-            <PostCard myDirection={"flex"} />
-          </Grid>
-          <Grid item xs>
-            <PostCard myDirection={"flex"} />
-          </Grid>
+          {recipe.map((post) => (
+            <Grid item xs>
+              <PostCard
+                title={post.title}
+                excerpt={post.excerpt}
+                image={post.image}
+                recipeHref={`/details/${post.slug}`}
+                myDirection={"flex"}
+              />
+            </Grid>
+          ))}
         </Grid>
         <Typography
           variant="h4"
@@ -59,15 +85,17 @@ const Posts = () => {
           columnSpacing={{ xs: 0, sm: 1, md: 1 }}
           direction={"row"}
         >
-          <Grid item xd={6} sm={6}>
-            <PostCard myDirection={"block"} />
-          </Grid>
-          <Grid item xd={6} sm={6}>
-            <PostCard myDirection={"block"} />
-          </Grid>
-          <Grid item xd={6} sm={6}>
-            <PostCard myDirection={"block"} />
-          </Grid>
+          {popular.map((popular) => (
+            <Grid item md={6} xs={6}>
+              <PostCard
+                title={popular.title}
+                excerpt={popular.excerpt}
+                image={`http://127.0.0.1:8000/${popular.image}`}
+                recipeHref={`/details/${popular.slug}`}
+                myDirection={"block"}
+              />
+            </Grid>
+          ))}
         </Grid>
         <Stack
           spacing={2}

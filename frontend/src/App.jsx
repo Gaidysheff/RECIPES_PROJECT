@@ -32,7 +32,7 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<FrontSection />} />
-            <Route path="/details" element={<DetailsPage />} />
+            <Route path="/details/:slug" element={<DetailsPage />} />
           </Routes>
         </BrowserRouter>
         <Footer />

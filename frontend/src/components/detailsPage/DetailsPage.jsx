@@ -8,52 +8,62 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { useEffect, useState } from "react";
 
 import Category from "../categories/Category";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import Suggestions from "../suggestions/Suggestions";
-import burger from "../../static/burger1.jpg";
+import axios from "axios";
+import { useParams } from "react-router";
+
+// import env from "react-dotenv";
 
 const DetailsPage = () => {
+  const [recipeDetails, setRecipeDetails] = useState([]);
+  let { slug } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await axios
+          .get(
+            // `http://127.0.0.1:8000/api/recipes/${slug}`
+            `${process.env.REACT_APP_API_URL}/api/recipes/${slug}`
+          )
+          .then((res) => {
+            console.log(res);
+            setRecipeDetails(res.data);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [slug]);
   return (
     <Container>
       <Category />
       <Typography variant="h3" align="center" mt={4}>
-        Заголовок рецепта
+        {recipeDetails.title}
+        {slug}
       </Typography>
       <Typography variant="body2" align="center" color={"GrayText"} p={4}>
         эти рецепты могут содержать партнерские ссылки. Пожалуйста, ознакомьтесь
         с моей политикой раскрытия информации.
       </Typography>
       <Typography variant="body1" align="center" m={2}>
-        Далеко-далеко за словесными горами в стране гласных и согласных живут
-        рыбные тексты. Встретил диких предупреждал если всеми повстречался злых
-        пор строчка большого речью! Не над свой путь предупредила курсивных ты
-        имени сбить рыбного ему великий мир языком, сих правилами диких
-        последний единственное! Лучше бросил запятой власти вопроса рукопись
-        безопасную он от всех знаках.
+        {recipeDetails.content}
       </Typography>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <CardMedia
           sx={{ height: "500px", width: "500px" }}
           component="img"
-          image={burger}
+          image={recipeDetails.image}
           alt="burger"
         />
       </Box>
       <Typography variant="body1" align="center" m={2}>
-        Далеко-далеко за словесными горами в стране гласных и согласных живут
-        рыбные тексты. Меня своего сих дороге вершину океана, подзаголовок ее
-        выйти страну бросил переписали решила диких, образ встретил текстами
-        лучше города напоивший! Домах грамматики пустился себя дорогу власти
-        ручеек предупреждал одна осталось, от всех которое рекламных жизни
-        вершину, пунктуация языком путь заголовок безорфографичный алфавит
-        ведущими! Жизни, они единственное? Осталось буквоград города текста свой
-        но, пустился курсивных всеми. Предупредила над маленький но себя
-        маленькая бросил lorem дороге однажды, знаках мир инициал журчит он
-        курсивных продолжил взгляд путь последний вопроса приставка. Строчка
-        встретил пор то своего ты собрал, выйти диких ipsum своих семантика
-        домах повстречался.
+        {recipeDetails.contentTwo}
       </Typography>
       <Typography variant="h3" align="center" mt={4}>
         Ингредиенты

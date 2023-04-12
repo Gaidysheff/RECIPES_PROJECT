@@ -32,20 +32,10 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<FrontSection />} />
-            <Route path="/details" element={<DetailsPage />} />
+            <Route path="/details/:slug" element={<DetailsPage />} />
           </Routes>
         </BrowserRouter>
         <Footer />
-        <header>Данные из DJANGO</header>
-        <hr /> <hr />
-        {this.state.details.map((output, id) => (
-          <div key={id}>
-            <div>
-              <h2>{output.title}</h2>
-              <p>{output.description}</p>
-            </div>
-          </div>
-        ))}
       </>
     );
   }
