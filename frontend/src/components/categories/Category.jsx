@@ -12,7 +12,7 @@ const Category = () => {
         await axios
           .get(
             // "http://127.0.0.1:8000/api/category/"
-            `${process.env.REACT_APP_API_URL}/api/category/`
+            `${import.meta.env.VITE_API_URL}/api/category/`
           )
           .then((res) => {
             // console.log(res);
