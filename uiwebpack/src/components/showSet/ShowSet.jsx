@@ -1,5 +1,6 @@
 import { Box, Grid, Typography, styled } from "@mui/material";
 
+import React from "react";
 import appetizer from "../../static/appetizer.jpg";
 import burger from "../../static/burger1.jpg";
 import drinks from "../../static/drinks.jpg";

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Recipe, category
+from .models import Recipe, Category
 
 
 class RecipeSerializer(serializers.ModelSerializer):
@@ -11,5 +11,5 @@ class RecipeSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = category
+        model = Category
         fields = '__all__'

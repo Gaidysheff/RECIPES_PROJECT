@@ -1,5 +1,6 @@
 import { Box, Stack, Typography, styled } from "@mui/material";
 
+import React from "react";
 import breakfast from "../../static/breakfast2.jpg";
 import dessert from "../../static/dessert.jpg";
 import dinner from "../../static/dinner.jpg";

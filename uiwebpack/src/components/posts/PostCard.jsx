@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 
+import React from "react";
+
 const PostCard = ({ myDirection, recipeHref, title, excerpt, image }) => {
   return (
     <Box mt={3}>
@@ -64,4 +66,3 @@ const PostCard = ({ myDirection, recipeHref, title, excerpt, image }) => {
 };
 
 export default PostCard;
-

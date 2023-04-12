@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 
 import Category from "../categories/Category";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import React from "react";
 import Suggestions from "../suggestions/Suggestions";
 import axios from "axios";
 import { useParams } from "react-router";

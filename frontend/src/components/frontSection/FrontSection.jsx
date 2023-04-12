@@ -2,6 +2,7 @@ import { Box, Container, Stack } from "@mui/material";
 
 import Category from "../categories/Category";
 import Posts from "../posts/Posts";
+import React from "react";
 import RightBar from "../rightBar/RightBar";
 import ShowSet from "../showSet/ShowSet";
 

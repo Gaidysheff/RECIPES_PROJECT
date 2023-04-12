@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 
+import React from "react";
 import { Send as SendIcon } from "@mui/icons-material";
 import chef from "../../static/chef.jpg";
 

@@ -3,7 +3,7 @@ from .views import RecipeApiView, CategoryApiView, CategoryPostApiView, PopularP
 from rest_framework import routers
 
 router = routers.SimpleRouter()
-router.register('recipes', RecipeApiView, basename='blogs')
+router.register('recipes', RecipeApiView, basename='recipes')
 router.register('category', CategoryApiView, basename='category')
 router.register('categoryBasedRecipes', CategoryPostApiView,
                 basename='CategoryBasedRecipes')

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class category(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='image', null=True, blank=True)
 
@@ -13,7 +13,7 @@ class Recipe(models.Model):
     POST_CHOICES = [
         ('POPULAR', 'Popular')
     ]
-    category = models.ForeignKey(category, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, default='')
     excerpt = models.CharField(max_length=255, default='')

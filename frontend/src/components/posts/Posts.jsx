@@ -5,7 +5,6 @@ import PostCard from "./PostCard";
 import axios from "axios";
 
 const Posts = () => {
-  // console.log(process.env.REACT_APP_API_URL);
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
@@ -13,8 +12,8 @@ const Posts = () => {
       try {
         await axios
           .get(
-            "http://127.0.0.1:8000/api/recipes/"
-            // `${process.env.REACT_APP_API_URL}/api/recipes/`
+            // "http://127.0.0.1:8000/api/recipes/"
+            `${import.meta.env.VITE_API_URL}/api/recipes/`
           )
           .then((res) => {
             // console.log(res);
@@ -34,8 +33,8 @@ const Posts = () => {
       try {
         await axios
           .get(
-            "http://127.0.0.1:8000/api/PopularPostsApiView/"
-            // `${process.env.REACT_APP_API_URL}/api/PopularPostsApiView/`
+            // "http://127.0.0.1:8000/api/PopularPostsApiView/"
+            `${import.meta.env.VITE_API_URL}/api/PopularPostsApiView/`
           )
           .then((res) => {
             setPopular(res.data);
@@ -90,7 +89,7 @@ const Posts = () => {
               <PostCard
                 title={popular.title}
                 excerpt={popular.excerpt}
-                image={`http://127.0.0.1:8000/${popular.image}`}
+                image={`${import.meta.env.VITE_API_URL}${popular.image}`}
                 recipeHref={`/details/${popular.slug}`}
                 myDirection={"block"}
               />

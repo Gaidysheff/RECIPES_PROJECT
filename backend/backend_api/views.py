@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import mixins
 from rest_framework.response import Response
 
-from .models import Recipe, category
+from .models import Recipe, Category
 from .serializer import RecipeSerializer, CategorySerializer
 
 
@@ -14,7 +13,7 @@ class RecipeApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Retri
 
 
 class CategoryApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
-    queryset = category.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
     lookup_field = 'id'
 
