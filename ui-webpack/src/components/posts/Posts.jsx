@@ -5,19 +5,14 @@ import PostCard from "./PostCard";
 import axios from "axios";
 
 const Posts = () => {
-  // console.log(process.env.REACT_APP_API_URL);
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await axios
-          .get(
-            // "http://127.0.0.1:8000/api/recipes/"
-            `${process.env.REACT_APP_API_URL}/api/recipes/`
-          )
+          .get(`${process.env.REACT_APP_API_URL}/api/recipes/`)
           .then((res) => {
-            // console.log(res);
             setRecipe(res.data);
           });
       } catch (error) {
@@ -33,10 +28,7 @@ const Posts = () => {
     const fetchData = async () => {
       try {
         await axios
-          .get(
-            // "http://127.0.0.1:8000/api/PopularPostsApiView/"
-            `${process.env.REACT_APP_API_URL}/api/PopularPostsApiView/`
-          )
+          .get(`${process.env.REACT_APP_API_URL}/api/PopularPostsApiView/`)
           .then((res) => {
             setPopular(res.data);
           });

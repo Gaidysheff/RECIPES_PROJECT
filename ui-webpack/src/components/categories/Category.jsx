@@ -11,12 +11,8 @@ const Category = () => {
     const fetchData = async () => {
       try {
         await axios
-          .get(
-            // "http://127.0.0.1:8000/api/category/"
-            `${process.env.REACT_APP_API_URL}/api/category/`
-          )
+          .get(`${process.env.REACT_APP_API_URL}/api/category/`)
           .then((res) => {
-            // console.log(res);
             setCategory(res.data);
           });
       } catch (error) {

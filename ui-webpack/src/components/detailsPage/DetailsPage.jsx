@@ -26,8 +26,8 @@ const DetailsPage = () => {
       try {
         await axios
           .get(
-            `http://127.0.0.1:8000/api/recipes/${slug}`
-            // `${process.env.REACT_APP_API_URL}/api/recipes/${slug}`
+            // `http://127.0.0.1:8000/api/recipes/${slug}`
+            `${process.env.REACT_APP_API_URL}/api/recipes/${slug}`
           )
           .then((res) => {
             console.log(res);
