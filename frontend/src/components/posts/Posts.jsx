@@ -11,12 +11,8 @@ const Posts = () => {
     const fetchData = async () => {
       try {
         await axios
-          .get(
-            // "http://127.0.0.1:8000/api/recipes/"
-            `${import.meta.env.VITE_API_URL}/api/recipes/`
-          )
+          .get(`${import.meta.env.VITE_API_URL}/api/recipes/`)
           .then((res) => {
-            // console.log(res);
             setRecipe(res.data);
           });
       } catch (error) {
@@ -32,10 +28,7 @@ const Posts = () => {
     const fetchData = async () => {
       try {
         await axios
-          .get(
-            // "http://127.0.0.1:8000/api/PopularPostsApiView/"
-            `${import.meta.env.VITE_API_URL}/api/PopularPostsApiView/`
-          )
+          .get(`${import.meta.env.VITE_API_URL}/api/PopularPostsApiView/`)
           .then((res) => {
             setPopular(res.data);
           });

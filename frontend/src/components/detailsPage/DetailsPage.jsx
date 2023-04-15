@@ -16,23 +16,19 @@ import Suggestions from "../suggestions/Suggestions";
 import axios from "axios";
 import { useParams } from "react-router";
 
-// import env from "react-dotenv";
-
 const DetailsPage = () => {
   const [recipeDetails, setRecipeDetails] = useState([]);
+  const [recipeIngredients, setRecipeIngredients] = useState("");
   let { slug } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await axios
-          .get(
-            // `http://127.0.0.1:8000/api/recipes/${slug}`
-            `${process.env.REACT_APP_API_URL}/api/recipes/${slug}`
-          )
+          .get(`${import.meta.env.VITE_API_URL}/api/recipes/${slug}`)
           .then((res) => {
-            console.log(res);
             setRecipeDetails(res.data);
+            setRecipeIngredients(res.data.ingredients);
           });
       } catch (error) {
         console.log(error);
@@ -45,14 +41,13 @@ const DetailsPage = () => {
       <Category />
       <Typography variant="h3" align="center" mt={4}>
         {recipeDetails.title}
-        {slug}
       </Typography>
       <Typography variant="body2" align="center" color={"GrayText"} p={4}>
         эти рецепты могут содержать партнерские ссылки. Пожалуйста, ознакомьтесь
         с моей политикой раскрытия информации.
       </Typography>
-      <Typography variant="body1" align="center" m={2}>
-        {recipeDetails.content}
+      <Typography variant="h5" align="center" m={2}>
+        {recipeDetails.excerpt}
       </Typography>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <CardMedia
@@ -63,38 +58,23 @@ const DetailsPage = () => {
         />
       </Box>
       <Typography variant="body1" align="center" m={2}>
-        {recipeDetails.contentTwo}
+        {recipeDetails.content}
       </Typography>
       <Typography variant="h3" align="center" mt={4}>
-        Ингредиенты
+        Ингредиенты:
       </Typography>
       <List>
-        <ListItemButton>
-          <ListItemIcon>
-            <DoubleArrowIcon />
-          </ListItemIcon>
-          <ListItemText primary="Мясо" />
-        </ListItemButton>
-        <ListItemButton>
-          <ListItemIcon>
-            <DoubleArrowIcon />
-          </ListItemIcon>
-          <ListItemText primary="Xлеб" />
-        </ListItemButton>
-        <ListItemButton>
-          <ListItemIcon>
-            <DoubleArrowIcon />
-          </ListItemIcon>
-          <ListItemText primary="Лук" />
-        </ListItemButton>
+        {recipeIngredients.split(",").map((ingredients) => (
+          <ListItemButton>
+            <ListItemIcon>
+              <DoubleArrowIcon />
+            </ListItemIcon>
+            <ListItemText primary={ingredients} />
+          </ListItemButton>
+        ))}
       </List>
       <Typography variant="body1" align="center" m={2}>
-        Далеко-далеко за словесными горами в стране гласных и согласных живут
-        рыбные тексты. Текста, обеспечивает скатился правилами букв они раз! От
-        всех жизни составитель ручеек букв собрал раз необходимыми одна, над
-        имеет lorem, маленький залетают которое мир семантика языком гор свой
-        однажды строчка. Диких грамматики, безорфографичный ее однажды путь свое
-        взгляд подзаголовок мир.
+        {recipeDetails.contentTwo}
       </Typography>
 
       <Typography variant="h5" color={"white"} bgcolor={"black"} align="center">
