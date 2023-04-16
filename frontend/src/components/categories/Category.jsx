@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, styled } from "@mui/material";
+import { Box, Link, Stack, Typography, styled } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
@@ -10,12 +10,8 @@ const Category = () => {
     const fetchData = async () => {
       try {
         await axios
-          .get(
-            // "http://127.0.0.1:8000/api/category/"
-            `${import.meta.env.VITE_API_URL}/api/category/`
-          )
+          .get(`${import.meta.env.VITE_API_URL}/api/category/`)
           .then((res) => {
-            // console.log(res);
             setCategory(res.data);
           });
       } catch (error) {
@@ -69,16 +65,18 @@ const Category = () => {
       sx={{ maxWidth: "100%", overflow: "auto" }}
     >
       {cat.map((category) => (
-        <CardBox>
-          <StyledCard
-            sx={{ backgroundImage: `url(${category.image})` }}
-          ></StyledCard>
-          <StyledTypography
-            sx={{ minHeight: "70px", display: "flex", alignItems: "center" }}
-          >
-            {category.name}
-          </StyledTypography>
-        </CardBox>
+        <Link href={`category/${category.id}`} sx={{ textDecoration: "none" }}>
+          <CardBox>
+            <StyledCard
+              sx={{ backgroundImage: `url(${category.image})` }}
+            ></StyledCard>
+            <StyledTypography
+              sx={{ minHeight: "70px", display: "flex", alignItems: "center" }}
+            >
+              {category.name}
+            </StyledTypography>
+          </CardBox>
+        </Link>
       ))}
     </Stack>
   );

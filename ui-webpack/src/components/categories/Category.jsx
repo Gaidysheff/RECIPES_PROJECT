@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, styled } from "@mui/material";
+import { Box, Link, Stack, Typography, styled } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import React from "react";
@@ -66,16 +66,18 @@ const Category = () => {
       sx={{ maxWidth: "100%", overflow: "auto" }}
     >
       {cat.map((category) => (
-        <CardBox>
-          <StyledCard
-            sx={{ backgroundImage: `url(${category.image})` }}
-          ></StyledCard>
-          <StyledTypography
-            sx={{ minHeight: "70px", display: "flex", alignItems: "center" }}
-          >
-            {category.name}
-          </StyledTypography>
-        </CardBox>
+        <Link href={`category/${category.id}`} sx={{ textDecoration: "none" }}>
+          <CardBox>
+            <StyledCard
+              sx={{ backgroundImage: `url(${category.image})` }}
+            ></StyledCard>
+            <StyledTypography
+              sx={{ minHeight: "70px", display: "flex", alignItems: "center" }}
+            >
+              {category.name}
+            </StyledTypography>
+          </CardBox>
+        </Link>
       ))}
     </Stack>
   );

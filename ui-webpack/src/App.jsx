@@ -3,6 +3,7 @@ import "./styles/styles.module.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { Component } from "react";
 
+import CatBasedRecipes from "./components/categories/CatBasedRecipes";
 import DetailsPage from "./components/detailsPage/DetailsPage";
 import Footer from "./components/footer/Footer";
 import FrontSection from "./components/frontSection/FrontSection";
@@ -33,6 +34,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<FrontSection />} />
             <Route path="/details/:slug" element={<DetailsPage />} />
+            <Route path="/category/:id" element={<CatBasedRecipes />} />
           </Routes>
         </BrowserRouter>
         <Footer />
