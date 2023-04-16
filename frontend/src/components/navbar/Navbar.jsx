@@ -13,6 +13,7 @@ import {
 import React, { useState } from "react";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import RecipeSearch from "../search/RecipeSearch";
 
 // import style from "./Navbar.module.scss";
 
@@ -58,12 +59,7 @@ const Navbar = () => {
             ))}
           </MenuBox>
           <Box flex={0.5}>
-            <TextField
-              sx={{ display: { xs: "none", md: "flex" } }}
-              color="warning"
-              label="Поиск здесь!"
-              variant="filled"
-            />
+            <RecipeSearch />
             <MenuIcon
               sx={{ display: { xs: "flex", md: "none" }, cursor: "pointer" }}
               onClick={() => setOpenMenu(!openMenu)}

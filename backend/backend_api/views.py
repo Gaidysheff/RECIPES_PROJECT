@@ -7,7 +7,8 @@ from .serializer import RecipeSerializer, CategorySerializer
 
 
 class RecipeApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
-    queryset = Recipe.objects.filter(id__lte=4)
+    # queryset = Recipe.objects.all()
+    queryset = Recipe.objects.filter(id__lte=5)
     serializer_class = RecipeSerializer
     lookup_field = 'slug'
 
