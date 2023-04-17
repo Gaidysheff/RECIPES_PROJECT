@@ -39,11 +39,11 @@ const Posts = () => {
     fetchData();
   }, []);
 
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
 
-  const handleChange = (e, p) => {
-    setPage(p);
-  };
+  // const handleChange = (e, p) => {
+  //   setPage(p);
+  // };
 
   return (
     <>
@@ -102,10 +102,14 @@ const Posts = () => {
           justifyContent="center"
           alignItems={"center"}
         >
-          <Typography variant="h5" align="center" mt={2} mb={2}>
+          {/* <Typography variant="h5" align="center" mt={2} mb={2}>
             Текущая страница: {page}
-          </Typography>
-          <Pagination count={5} color={"warning"} onChange={handleChange} />
+          </Typography> */}
+          <Pagination
+            count={5}
+            color={"warning"}
+            //  onChange={handleChange}
+          />
         </Stack>
       </Box>
     </>

@@ -56,3 +56,4 @@ const CatBasedRecipes = () => {
 };
 
 export default CatBasedRecipes;
+

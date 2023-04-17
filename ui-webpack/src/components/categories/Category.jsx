@@ -1,7 +1,6 @@
 import { Box, Link, Stack, Typography, styled } from "@mui/material";
 import { useEffect, useState } from "react";
 
-import React from "react";
 import axios from "axios";
 
 const Category = () => {
