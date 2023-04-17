@@ -1,7 +1,7 @@
 import { Container, Typography } from "@mui/material";
 
+import Eugene from "../../assets/Eugene-paint-5.jpg";
 import React from "react";
-import construction from "../../assets/Page_Under_Construction.jpg";
 
 const About = () => {
   return (
@@ -22,10 +22,10 @@ const About = () => {
         }}
         m={5}
       >
-        Немного информации о нас:
+        Немного о себе:
       </Typography>
       <Typography mb={3}>
-        <img src={construction} alt="Under Construction" />
+        <img src={Eugene} alt="Author of the site" />
       </Typography>
     </Container>
   );
