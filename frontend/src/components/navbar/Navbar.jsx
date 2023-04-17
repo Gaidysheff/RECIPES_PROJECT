@@ -2,6 +2,7 @@ import {
   AppBar,
   Box,
   Drawer,
+  Link,
   List,
   ListItem,
   ListItemButton,
@@ -29,10 +30,10 @@ const Navbar = () => {
     cursor: "pointer",
   });
   const MenuItems = [
-    { Name: "Главная", Link: "#" },
-    { Name: "Рецепты", Link: "#" },
-    { Name: "О нас", Link: "#" },
-    { Name: "Подписаться", Link: "#" },
+    { Name: "Главная", Link: "" },
+    { Name: "Рецепты", Link: "notfound" },
+    { Name: "О нас", Link: "about" },
+    { Name: "Подписаться", Link: "notfound" },
   ];
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -55,7 +56,14 @@ const Navbar = () => {
           </Box>
           <MenuBox flex={1} sx={{ display: { xs: "none", md: "flex" } }}>
             {MenuItems.map((item) => (
-              <Typography variant="body2">{item.Name}</Typography>
+              <Typography variant="body1">
+                <Link
+                  style={{ textDecoration: "none", color: "tomato" }}
+                  href={`/${item.Link}`}
+                >
+                  {item.Name}
+                </Link>
+              </Typography>
             ))}
           </MenuBox>
           <Box flex={0.5}>
