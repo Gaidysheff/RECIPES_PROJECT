@@ -6,14 +6,22 @@ import axios from "axios";
 
 const Posts = () => {
   const [recipe, setRecipe] = useState([]);
+  // const [page, setPage] = useState(1);
+
+  // const handleChange = (p) => {
+  //   setPage(p);
+  // };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await axios
           .get(`${process.env.REACT_APP_API_URL}/api/recipes/`)
+          // .get(`${process.env.REACT_APP_API_URL}/api/recipes/?page=${page}`)
           .then((res) => {
             setRecipe(res.data);
+            // console.log(res.data);
+            // setRecipe(res.data.results);
           });
       } catch (error) {
         console.log(error);
@@ -21,6 +29,7 @@ const Posts = () => {
     };
     fetchData();
   }, []);
+  // }, [page]);
 
   const [popular, setPopular] = useState([]);
 
@@ -38,12 +47,6 @@ const Posts = () => {
     };
     fetchData();
   }, []);
-
-  // const [page, setPage] = useState(1);
-
-  // const handleChange = (e, p) => {
-  //   setPage(p);
-  // };
 
   return (
     <>
@@ -102,13 +105,10 @@ const Posts = () => {
           justifyContent="center"
           alignItems={"center"}
         >
-          {/* <Typography variant="h5" align="center" mt={2} mb={2}>
-            Текущая страница: {page}
-          </Typography> */}
           <Pagination
             count={5}
             color={"warning"}
-            //  onChange={handleChange}
+            // onChange={() => handleChange()}
           />
         </Stack>
       </Box>

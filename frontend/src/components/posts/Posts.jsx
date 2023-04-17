@@ -102,9 +102,6 @@ const Posts = () => {
           justifyContent="center"
           alignItems={"center"}
         >
-          {/* <Typography variant="h5" align="center" mt={2} mb={2}>
-            Текущая страница: {page}
-          </Typography> */}
           <Pagination
             count={5}
             color={"warning"}

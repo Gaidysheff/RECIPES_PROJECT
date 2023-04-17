@@ -4,6 +4,7 @@ from rest_framework.response import Response
 
 from .models import Recipe, Category
 from .serializer import RecipeSerializer, CategorySerializer
+from .service import PaginationRecipes
 
 
 class RecipeApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
@@ -11,6 +12,7 @@ class RecipeApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Retri
     # queryset = Recipe.objects.filter(id__lte=5)
     serializer_class = RecipeSerializer
     lookup_field = 'slug'
+    # pagination_class = PaginationRecipes
 
 
 class CategoryApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
