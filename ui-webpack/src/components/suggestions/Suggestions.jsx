@@ -1,13 +1,53 @@
-import { Box, Stack, Typography, styled } from "@mui/material";
+import { Box, Grid, Link, Stack, Typography, styled } from "@mui/material";
 
 import React from "react";
-import breakfast from "../../static/breakfast2.jpg";
+import breakfast from "../../static/breakfast.jpg";
 import dessert from "../../static/dessert.jpg";
-import dinner from "../../static/dinner.jpg";
 import drinks from "../../static/drinks.jpg";
 import salad from "../../static/salad.jpg";
+import torty from "../../static/torty.jpg";
+import vypechka from "../../static/vypechka.jpg";
 
 const Suggestions = () => {
+  const SetItems = [
+    {
+      id: "2",
+      name: "Завтраки",
+      title: "breakfast",
+      image: breakfast,
+    },
+    {
+      id: "7",
+      name: "Салаты",
+      title: "salad",
+      image: salad,
+    },
+    {
+      id: "8",
+      name: "Десерты",
+      title: "dessert",
+      image: dessert,
+    },
+    {
+      id: "1",
+      name: "Напитки",
+      title: "drinks",
+      image: drinks,
+    },
+    {
+      id: "10",
+      name: "Выпечка",
+      title: "vypechka",
+      image: vypechka,
+    },
+    {
+      id: "11",
+      name: "Торты",
+      title: "torty",
+      image: torty,
+    },
+  ];
+
   const StyledCard = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
@@ -54,24 +94,21 @@ const Suggestions = () => {
       sx={{ maxWidth: "100%", overflow: "auto" }}
     >
       <CardBox>
-        <StyledCard sx={{ backgroundImage: `url(${dessert})` }} />
-        <StyledTypography>Dessert</StyledTypography>
-      </CardBox>
-      <CardBox>
-        <StyledCard sx={{ backgroundImage: `url(${drinks})` }} />
-        <StyledTypography>Drinks</StyledTypography>
-      </CardBox>
-      <CardBox>
-        <StyledCard sx={{ backgroundImage: `url(${dinner})` }} />
-        <StyledTypography>Dinner</StyledTypography>
-      </CardBox>
-      <CardBox>
-        <StyledCard sx={{ backgroundImage: `url(${breakfast})` }} />
-        <StyledTypography>Breakfast</StyledTypography>
-      </CardBox>
-      <CardBox>
-        <StyledCard sx={{ backgroundImage: `url(${salad})` }} />
-        <StyledTypography>Salad</StyledTypography>
+        <Grid container direction={"row"} columnSpacing={2} rowSpacing={1}>
+          {SetItems.map((item) => (
+            <Grid item mb={3}>
+              <Link
+                style={{ textDecoration: "none" }}
+                href={`category/${item.id}`}
+              >
+                <StyledCard
+                  sx={{ backgroundImage: `url(${item.image})` }}
+                ></StyledCard>
+                <StyledTypography>{item.name}</StyledTypography>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
       </CardBox>
     </Stack>
   );
