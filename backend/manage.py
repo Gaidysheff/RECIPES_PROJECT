@@ -6,6 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    settings_module = 'recipes_django_react.deployment' if 'WEBSITE_HOSTNAME' in os.environ else 'recipes_django_react.settings'
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'recipes_django_react.settings')
     try:
         from django.core.management import execute_from_command_line
